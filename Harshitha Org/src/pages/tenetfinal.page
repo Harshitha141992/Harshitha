@@ -1,0 +1,89 @@
+<apex:page Controller="Newctrl" id="pg">
+   <apex:form id="frm">
+      <apex:pageBlock id="pgblk" >
+         <apex:pageBlockButtons location="top">
+            <apex:commandButton value="Search" action="{!search}"/>
+                                                                                                            
+                                                                                                                
+         </apex:pageBlockButtons>
+         <apex:pageBlockSection columns="2" id="pgblksec">
+            
+     <apex:inputField value="{!con.FirstName}" />
+     <apex:inputField value="{!con.LastName}" required="false"/>
+     <apex:inputField value="{!con.Phone}" required="false"/>
+     <apex:inputfield value="{!con.Email}"/> 
+     <apex:inputField value="{!con.MailingState}" required="false"/>
+     <apex:inputField value="{!con.MailingCity}" required="false"/>
+     
+     <apex:inputfield value="{!con.Id}"/>
+     <apex:inputfield value="{!con.MailingPostalCode}"/>
+     <apex:inputfield value="{!con.MailingStreet}"/>
+     
+     
+             
+        
+          </apex:pageBlockSection>
+      </apex:pageBlock>
+       
+       <apex:pageBlock id="details" rendered="{! IF( conlist != null && conlist.size >0, true, false)}">
+          
+          <apex:outputPanel >
+         <apex:pageBlockTable id="contact-table" value="{!conlist}" var="c">
+             
+             
+            <apex:column headerValue="FirstName" >
+                
+               <apex:facet name="header">FirstName</apex:facet>
+               {!c.FirstName}
+               <!--<apex:commandLink value="{!c.FirstName}" action="{!click}">
+                  <apex:param value="{!c.Id}" name="contactid" assignTo="{!contactID}"/>
+               </apex:commandLink>-->
+            </apex:column>
+           <apex:column >
+               <apex:facet name="header">LastName</apex:facet>
+               {!c.lastName}
+            </apex:column>
+            
+            <apex:column >
+               <apex:facet name="header">Address</apex:facet>
+               {!c.MailingStreet}
+            </apex:column>
+            <apex:column >
+               <apex:facet name="header">Email</apex:facet>
+               {!c.Email}
+            </apex:column>
+            <apex:column >
+               <apex:facet name="header">Phone</apex:facet>
+               {!c.Phone}
+            </apex:column>
+             
+            <apex:column >
+               <apex:facet name="header">BirthDate</apex:facet>
+               {!c.Birthdate}
+            </apex:column>
+             
+            
+             <!--<apex:facet name="footer"> Page {!pageNumber} of {!totalPages}</apex:facet>-->
+             <!--<apex:facet name="footer"> {!TotalPages} </apex:facet>-->
+                                     
+         </apex:pageBlockTable>
+              </apex:outputPanel>
+          
+          
+           <apex:pageblockButtons location="top">
+            <apex:commandButton value="Previous" rerender="details" action="{!previous}" disabled="{!prev}"/>
+            <apex:commandButton value="Next" rerender="details" action="{!next}" disabled="{!nxt}"/>
+            <apex:commandButton value="FirstPage" rerender="details" action="{!FirstPage}" disabled="{!prev}"/> 
+             <apex:commandButton value="LastPage" rerender="details" action="{!LastPage}" disabled="{!nxt}"/> 
+             
+         </apex:pageblockButtons>
+
+         
+ </apex:pageBlock>
+       
+             
+       
+       
+      
+   </apex:form>
+</apex:page>

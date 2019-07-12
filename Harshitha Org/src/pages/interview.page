@@ -1,0 +1,27 @@
+<apex:page controller="InterviewFourClass" sidebar="false">
+<apex:form >
+<apex:sectionHeader title="Interview Four"/>
+<apex:pageblock tabstyle="Lead" title="Accounts with Contacts">
+<apex:pagemessages />
+<apex:repeat value="{!lstAcc}" var="EAcc" >
+<apex:pageblockSection title="{!EAcc.name}" columns="1">
+<apex:pageblockTable value="{!EAcc.Contacts}" var="Econ"
+columnswidth="25%,25%,25%,25%">
+<apex:column headerValue="First Name">
+<apex:outputText value="{!Econ.firstname}" />
+</apex:Column>
+<apex:column headerValue="Last Name">
+<apex:outputText value="{!Econ.lastname}" />
+</apex:Column>
+<apex:column headerValue="Phone Name">
+<apex:outputText value="{!Econ.phone}" />
+</apex:Column>
+<apex:column headerValue="Email">
+<apex:outputText value="{!Econ.Email}" />
+</apex:Column>
+</apex:pageblockTable>
+</apex:pageblockSection>
+</apex:repeat>
+</apex:pageblock>
+</apex:form>
+</apex:page>

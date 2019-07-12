@@ -1,0 +1,13 @@
+<apex:page controller="ContactListController">
+	<apex:form >
+	<apex:pageBlock >
+			<apex:pageBlockTable value="{!contacts}" var="contact">
+				<apex:column headerValue="First Name" value="{!contact.FirstName}"/>
+				<apex:column headerValue="Last Name" value="{!contact.LastName}"/>
+				<apex:commandlink value="Goto DetailPage" action="{!gotoContactDetailPage}" reRender="none">
+					<apex:param name="contactid" value="{!contact.Id}" assignTo="{!contactId}"/>
+				</apex:commandlink>
+			</apex:pageBlockTable>
+		</apex:pageBlock>
+	</apex:form>
+</apex:page>

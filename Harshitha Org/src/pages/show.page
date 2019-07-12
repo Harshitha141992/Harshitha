@@ -1,0 +1,23 @@
+<apex:page >
+  <apex:form >
+<script>
+function doChange(thiss)
+{
+ if(thiss.value == 'Test3')
+  document.getElementById("myid").style.visibility="visible";
+ else
+  document.getElementById("myid").style.visibility="hidden";
+}
+</script>
+ 
+    <apex:selectList >
+      <apex:selectOption itemLabel="Test1" itemValue="Test1"></apex:selectOption>
+      <apex:selectOption itemLabel="Test2" itemValue="Test2"></apex:selectOption>
+      <apex:selectOption itemLabel="Test3" itemValue="Test3"></apex:selectOption>
+    </apex:selectList>
+    
+    <div id="myid" style="visibility:hidden">
+    <apex:outputLabel >Hi</apex:outputLabel>
+    </div>
+      </apex:form>
+</apex:page>

@@ -1,0 +1,156 @@
+<apex:page Controller="Ctrl_ContactSearch" id="pg">
+   <apex:form id="frm">
+      <apex:pageBlock id="pgblk" >
+          
+          <apex:outputPanel id="errmsg">
+           <apex:pageMessages />
+           </apex:outputPanel>
+         
+         <apex:pageBlockButtons location="top">
+         
+             <apex:commandButton value="Search" action="{!searchContacts}" reRender="contact-table,one,details,errmsg"/>
+                                                                                                            
+                                                                                                                
+         </apex:pageBlockButtons>
+         <apex:pageBlockSection columns="2" id="pgblksec">
+            <apex:pageBlockSectionItem id="pgblksecit1" >
+                
+					<apex:outputLabel value="First Name" />
+                
+               <apex:inputText value="{!firstname}" id="myMsg"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem id="pgblksecit2">
+               <apex:outputLabel value="Email" />
+               <apex:inputText value="{!Email}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem id="pgblksecit3">
+               <apex:outputLabel value="Last Name" />
+               <apex:inputText value="{!lastname}" id="ln"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem id="pgblksecit4" >
+               <apex:outputLabel value="Phone Number"/>
+               <apex:inputText value="{!phone}" maxlength="10" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem id="pgblksecit5">
+               <apex:outputLabel value="State" />
+               <apex:inputText value="{!mailingState}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem id="pgblksecit6">
+               <apex:outputLabel value="BirthDate" />
+               <apex:inputText value="{!birthdate}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem id="pgblksecit7">
+               <apex:outputLabel value="City" />
+               <apex:inputText value="{!mailingcity}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem id="pgblksecit8">
+               <apex:outputLabel value="Salesforce ID" />
+               <apex:inputText value="{!id}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem id="pgblksecit9">
+               <apex:outputLabel value="Wundermann Id" />
+               <apex:inputText value="{!WundermannId}" />
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem id="pgblksecit10" >
+               <apex:outputLabel value="Zip Code" />
+               <apex:inputText value="{!mailingPostalCode}" id="Zp" maxlength="5"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem id="pgblksecit11" >
+               <apex:outputLabel value="Street Address" />
+               <apex:inputText value="{!mailingstreet}" />
+            </apex:pageBlockSectionItem>
+         </apex:pageBlockSection>
+      </apex:pageBlock>
+             <apex:pageBlock id="details">
+          
+             <apex:outputPanel id="contact-table">  
+            <apex:pageBlockTable value="{!contacts}" var="c">
+                
+                
+                
+                    
+                <apex:column headerValue="FirstName"> 
+            <apex:commandLink value="{!c.FirstName}" action="{!click}">
+                
+                
+                    <apex:param value="{!c.Id}" name="contactid" assignTo="{!contactID}"/>
+                    </apex:commandLink>
+            </apex:column>
+                
+
+                    <apex:column >
+                        <apex:facet name="header">LastName</apex:facet>
+                        {!c.lastName}
+                    </apex:column>
+                
+                
+                
+               
+                
+                
+                <apex:column >
+                        <apex:facet name="header">Wundermann Id</apex:facet>
+                        {!c.WundermannId__c}
+                    </apex:column>
+                
+                  <apex:column >
+                        <apex:facet name="header">Salesforce ID</apex:facet>
+                        {!c.Id}
+                    </apex:column>
+                
+                
+                
+                <apex:column >
+                        <apex:facet name="header">Address</apex:facet>
+                        {!c.Address__c}
+                    </apex:column>
+                
+                
+                
+                
+                
+                
+                
+                <apex:column >
+                        <apex:facet name="header">Email</apex:facet>
+                        {!c.Email}
+                    </apex:column>
+                
+               
+                
+
+                
+                <apex:column >
+                        <apex:facet name="header">Phone</apex:facet>
+                        {!c.Phone}
+                    </apex:column>
+                
+                <apex:column >
+                        <apex:facet name="header">BirthDate</apex:facet>
+                        {!c.Birthdate}
+                    </apex:column>
+   
+               <apex:facet name="footer"> Page {!pageNumber} of {!totalPages}</apex:facet>  
+              </apex:pageBlockTable>
+                 
+                   
+                 </apex:outputPanel>
+            
+            
+             <apex:pageblockButtons location="bottom" id="one">
+            <apex:commandButton value="Previous" rerender="details" action="{!previous}" disabled="{!prev}"/>
+            <apex:commandButton value="Next" rerender="details" action="{!next}" disabled="{!nxt}"/>
+            <apex:commandButton value="FirstPage" rerender="details" action="{!FirstPage}" disabled="{!prev}"/> 
+             <apex:commandButton value="LastPage" rerender="details" action="{!LastPage}" disabled="{!nxt}"/> 
+        
+         </apex:pageblockButtons>
+                 
+         <apex:outputText value="{!TotalPages}" label="Total Records" id="value"/>
+        
+                 </apex:pageBlock>
+
+   </apex:form>
+    
+
+      
+</apex:page>

@@ -1,0 +1,10 @@
+<apex:page standardController="contact">
+  <apex:pageBlock >
+    <apex:pageBlockSection >
+    <apex:pageBlockSectionItem >
+    <apex:outputLabel ></apex:outputLabel>
+  <apex:outputField value="{!Contact.hasoptedoutofemail}"/>
+  </apex:pageBlockSectionItem>
+  </apex:pageBlockSection>  
+  </apex:pageBlock>
+</apex:page>

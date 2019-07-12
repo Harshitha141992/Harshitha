@@ -1,0 +1,18 @@
+<apex:page controller="Testctrl">
+    <apex:form >
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!acctlist}" var="acct">
+        
+            <apex:column value="{!acct.Name}"/>
+            <apex:column >
+                <apex:facet name="header">Absent</apex:facet>
+                <apex:inputCheckbox value="{!attdmap[acct.Id]}"> 
+                </apex:inputCheckbox>
+            </apex:column>
+
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    
+    <apex:commandButton action="{!submit}" value="Submit"/>
+    </apex:form>
+</apex:page>

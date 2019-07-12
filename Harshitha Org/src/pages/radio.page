@@ -1,0 +1,10 @@
+<apex:page controller="radiobutton" >
+    <apex:form >
+
+<apex:selectRadio >
+  <apex:selectOptions value="{!items}" /><br/>
+</apex:selectRadio>
+
+
+    </apex:form>
+</apex:page>

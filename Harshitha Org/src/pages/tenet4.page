@@ -1,0 +1,82 @@
+<apex:page standardController="Contact" extensions="Checkclick"> 
+    <apex:form >
+        <apex:pageBlock > 
+            
+            <apex:pageBlockButtons location="bottom">
+                    <apex:commandButton action="{!Quicksave}" value="Save"/>
+                
+                </apex:pageBlockButtons>
+           
+            <apex:pageBlockSection columns="2">  
+                
+                
+                <!---<apex:commandLink value="FirstName" action="FirstName"/>--->
+                <apex:outputField value="{!Contact.FirstName}"/>
+                <apex:outputField value="{!Contact.Phone}"/>
+                <apex:outputField value="{!Contact.LastName}"/>
+                 <apex:outputField value="{!Contact.Email}"/>
+                <apex:outputField value="{!Contact.birthdate}"/>
+                <apex:outputField value="{!Contact.Address__c}"/>
+                <apex:outputField value="{!Contact.Salesforce_ID1__c}"/> 
+                 <apex:outputField value="{!Contact.WundermannId__c}"/>
+            </apex:pageBlockSection>
+            
+            
+            
+            <apex:pageBlockSection columns="1" title="Modify Suppression" id="pageId">
+                
+               
+               
+                
+           
+                    
+                <apex:inputCheckbox value="{!Contact.SUP_manual_do_not_call__c}" id="one"/>  
+               
+                <apex:inputCheckbox value="{!Contact.SUP_manual_do_not_email__c}" id="two"/> 
+                
+               
+                <apex:inputCheckbox value="{!Contact.SUP_manual_do_not_mail__c}" id="three" rendered="{!three}"/> 
+                
+                
+                <!--<apex:inputCheckbox value="{!Contact.SUP_manual_do_not_solicit__c}" id="four" rendered="{!show4}"/>-->
+                
+                    <!--<apex:outputLabel value="{!Contact.SUP_manual_do_not_solicit__c}" for="check"/>-->
+                <apex:pageBlockSectionItem >  
+                    <!-- <apex:outputLabel value="{!$ObjectType.Contact.fields.SUP_manual_do_not_solicit__c.label}" for="priority"/>-->  
+                 <!--<apex:actionRegion >-->
+                <apex:inputCheckbox > value="{!Contact.SUP_manual_do_not_solicit__c}" id="priority">
+                        <apex:actionSupport action="{!checkChanged}" reRender="pageId" event="onchange"/>
+                     </apex:inputCheckbox> 
+                   <!--</apex:actionRegion>-->
+                  </apex:pageBlockSectionItem>
+         
+
+        <!--<apex:inputCheckbox value="{!wraprec.checkflag}" />-->
+
+    
+                <apex:inputField value="{!Contact.SUP_manual_do_not_solicit_reason__c}"/>
+                <!--<apex:actionFunction name="selectallmethod" action="{!selectallnone}" rerender="pgblck"/> -->
+           </apex:pageBlockSection>
+            <!-----<apex:inlineEditSupport Wanderman__c/>----->  
+        </apex:pageBlock>
+     </apex:form>
+    
+    <script>
+function myFunction() {
+    var checkBox4 = document.getElementById("four");
+    var checkBox1 = document.getElementById("one");
+    var checkBox2 = document.getElementById("two");
+    var checkBox3 = document.getElementById("three");
+    if (checkBox4.checked == true){
+        checkBox1.checked == true";
+        checkBox2.checked == true";
+        checkBox3.checked == true";
+    } else {
+       checkBox1.checked == false";
+        checkBox2.checked == false";
+        checkBox3.checked == false";
+    }
+}
+</script>
+    
+   </apex:page>

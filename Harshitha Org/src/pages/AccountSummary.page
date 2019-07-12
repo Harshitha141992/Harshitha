@@ -1,0 +1,17 @@
+<apex:page >
+    
+    <apex:pageBlock title="Account Summary">
+    
+        <apex:pageBlockSection >
+        
+        $A.get("e.force:navigateToURL").setParams(
+    {"url": "/apex/pageName"}).fire();
+        
+        
+        </apex:pageBlockSection>    
+    
+    
+    
+    
+    </apex:pageBlock>
+</apex:page>
